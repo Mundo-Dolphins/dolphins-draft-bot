@@ -38,6 +38,8 @@ jobs:
         with:
           go-version: stable
           cache: true
+      - name: Test release script
+        run: .github/scripts/test-next-patch-release.sh
       - name: Lint
         uses: golangci/golangci-lint-action@v9
         with:
