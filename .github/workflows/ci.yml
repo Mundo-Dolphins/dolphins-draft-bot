@@ -5,21 +5,7 @@ on:
   # main so each commit runs CI once.
   push:
     branches: [ main ]
-    paths-ignore:
-      - "**.md"
-      - "docs/**"
-      - "LICENSE"
-      - ".gitignore"
-      - ".github/dependabot.yml"
-      - ".github/copilot-instructions.md"
   pull_request:
-    paths-ignore:
-      - "**.md"
-      - "docs/**"
-      - "LICENSE"
-      - ".gitignore"
-      - ".github/dependabot.yml"
-      - ".github/copilot-instructions.md"
 
 # A newer commit on the same PR or branch cancels the run in progress.
 concurrency:
@@ -38,6 +24,8 @@ jobs:
         with:
           go-version: stable
           cache: true
+      - name: Test release script
+        run: .github/scripts/test-next-patch-release.sh
       - name: Lint
         uses: golangci/golangci-lint-action@v9
         with:
