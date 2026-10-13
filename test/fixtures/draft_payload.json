@@ -1,0 +1,24 @@
+{
+  "status": {"type": {"name": "In Progress"}, "currentRound": 2},
+  "picks": [
+    {
+      "overall": 11,
+      "round": 1,
+      "team": {"id": "15", "abbreviation": "MIA", "displayName": "Miami Dolphins"},
+      "pick": "Player One",
+      "position": "QB",
+      "college": "Miami"
+    },
+    {
+      "overall": 30,
+      "round": 1,
+      "team": {"id": "10", "abbreviation": "DEN", "displayName": "Denver Broncos"}
+    },
+    {
+      "overall": 52,
+      "round": 2,
+      "team": {"id": "15", "abbreviation": "MIA", "displayName": "Miami Dolphins"},
+      "originalTeam": {"id": "9", "abbreviation": "GB", "displayName": "Green Bay Packers"}
+    }
+  ]
+}

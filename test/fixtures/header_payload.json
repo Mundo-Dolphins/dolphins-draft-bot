@@ -1,0 +1,31 @@
+{
+  "sports": [
+    {
+      "leagues": [
+        {
+          "draft": {
+            "status": {"currentRound": 3, "isActive": true},
+            "rounds": [
+              {
+                "round": 3,
+                "picks": [
+                  {
+                    "overall": 75,
+                    "team": {"id": 15, "abbreviation": "MIA", "displayName": "Miami Dolphins"},
+                    "selection": {
+                      "athlete": {
+                        "displayName": "Player Two",
+                        "position": {"abbreviation": "WR"},
+                        "college": {"name": "Alabama"}
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

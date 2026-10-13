@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  # Branches with an open PR are covered by pull_request; push only checks
+  # main so each commit runs CI once.
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "LICENSE"
+      - ".gitignore"
+      - ".github/dependabot.yml"
+      - ".github/copilot-instructions.md"
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "LICENSE"
+      - ".gitignore"
+      - ".github/dependabot.yml"
+      - ".github/copilot-instructions.md"
+
+# A newer commit on the same PR or branch cancels the run in progress.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version: stable
+          cache: true
+      - name: Lint
+        uses: golangci/golangci-lint-action@v9
+        with:
+          version: v2.14.0
+      - name: Fmt check
+        run: make fmt-check
+      - name: Test
+        run: make test
+      - name: Coverage
+        run: make coverage

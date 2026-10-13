@@ -1,0 +1,24 @@
+# Ejemplo de unidad systemd. Ajusta USER y las rutas a tu instalacion.
+# Instalar: sudo cp deploy/draft-bot.service.example /etc/systemd/system/draft-bot.service
+[Unit]
+Description=Draft bot (alertas de NFL Draft por Telegram)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=USER
+WorkingDirectory=/opt/draft-bot
+ExecStart=/opt/draft-bot/draft-bot -config /opt/draft-bot/config/config.yaml -env-file /opt/draft-bot/.env
+Restart=on-failure
+RestartSec=15
+
+# Endurecimiento basico
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/draft-bot/data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+# Credenciales y estado local: nunca se versionan
+.env
+.env.*
+!.env.example
+data/
+*.log
+logs/
+
+# Artefactos
+build/
+dist/
+coverage.out
+coverage.txt
+
+# Configuracion propia del despliegue (la del repo es solo un ejemplo funcional)
+config/*.local.yaml
